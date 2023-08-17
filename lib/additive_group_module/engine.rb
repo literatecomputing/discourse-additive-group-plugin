@@ -18,19 +18,21 @@ module ::AdditiveGroupModule
   def self.remove_user_from_groups(user, groups)
     GroupUser.where(user_id: user.id, group_id: groups.map(&:id)).destroy_all
     groups.each do |group|
-            GroupActionLogger.new(Discourse.system_user, group).log_remove_user_from_group(user)
+      GroupActionLogger.new(Discourse.system_user, group).log_remove_user_from_group(user)
     end
   end
 
-  def self.add_if_member(user, group_memberships, add_to_group )
-    if group_memberships.pluck(:name).intersection(user.groups.pluck(:name)).count == group_memberships.count
+  def self.add_if_member(user, group_memberships, add_to_group)
+    if group_memberships.pluck(:name).intersection(user.groups.pluck(:name)).count ==
+         group_memberships.count
       add_user_to_groups(user, [add_to_group])
     end
   end
 
- def self.delete_unless_member(user, required_memberships, remove_from_group)
-  unless required_memberships.pluck(:name).intersection(user.groups.pluck(:name)).count == required_memberships.count
+  def self.delete_unless_member(user, required_memberships, remove_from_group)
+    unless required_memberships.pluck(:name).intersection(user.groups.pluck(:name)).count ==
+             required_memberships.count
       remove_user_from_groups(user, [remove_from_group])
+    end
   end
-end
 end

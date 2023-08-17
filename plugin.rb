@@ -24,8 +24,8 @@ after_initialize do
       required_group_names, add_group_name = gl.split(":")
       add_group = Group.find_by_name(add_group_name)
       next unless add_group
-      required_groups=Group.where("name in ('#{required_group_names.gsub(",","','")}')")
-      AdditiveGroupModule::add_if_member(user, required_groups, add_group )
+      required_groups = Group.where("name in ('#{required_group_names.gsub(",", "','")}')")
+      AdditiveGroupModule.add_if_member(user, required_groups, add_group)
     end
   end
 
@@ -34,10 +34,10 @@ after_initialize do
     user = User.find(self.user_id)
     group_list.each do |gl|
       required_group_names, rm_group_name = gl.split(":")
-      rm_group=Group.find_by_name(rm_group_name)
+      rm_group = Group.find_by_name(rm_group_name)
       next unless rm_group
-      required_groups=Group.where("name in ('#{required_group_names.gsub(",","','")}')")
-      AdditiveGroupModule::delete_unless_member(user, required_groups, rm_group )
+      required_groups = Group.where("name in ('#{required_group_names.gsub(",", "','")}')")
+      AdditiveGroupModule.delete_unless_member(user, required_groups, rm_group)
     end
   end
 
@@ -47,11 +47,11 @@ after_initialize do
     group_list = SiteSetting.additive_groups_list.split("|")
     user = User.find(event[:user_id])
     group_list.each do |gl|
-    required_group_names, rm_group_name = gl.split(":")
-    rm_group=Group.find_by_name(rm_group_name)
-    next unless rm_group
-    required_groups=Group.where("name in ('#{required_group_names.gsub(",","','")}')")
-    AdditiveGroupModule::delete_unless_member(user, required_groups, rm_group )
+      required_group_names, rm_group_name = gl.split(":")
+      rm_group = Group.find_by_name(rm_group_name)
+      next unless rm_group
+      required_groups = Group.where("name in ('#{required_group_names.gsub(",", "','")}')")
+      AdditiveGroupModule.delete_unless_member(user, required_groups, rm_group)
     end
   end
 end
