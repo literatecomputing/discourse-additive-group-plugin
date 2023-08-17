@@ -1,5 +1,6 @@
-# **Plugin Name** Plugin
+# **Additive Group** Plugin
 
 **Plugin Summary**
 
-For more information, please see: **url to meta topic**
+Add to group X when member of groups Y and Z.
+

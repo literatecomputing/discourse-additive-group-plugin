@@ -1,1 +1,5 @@
 en:
+  site_settings:
+    additive_groups_list: "comma-separated required group names:group name to add"
+    additive_groups_enabled: Process group memberships on every group membership change
+  

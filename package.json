@@ -1,8 +1,8 @@
 {
-  "name": "discourse-plugin-name",
+  "name": "discourse-additive-group-plugin",
   "version": "0.0.1",
   "repository": "TODO",
-  "author": "Discourse",
+  "author": "Jay Pfaffman",
   "license": "MIT",
   "devDependencies": {
     "eslint-config-discourse": "^3.1.0"

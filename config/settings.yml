@@ -1,4 +1,9 @@
 plugins:
-  plugin_name_enabled:
+  additive_groups_enabled:
     default: true
     client: true
+  additive_groups_list:
+    type: list
+    client: false
+    default: "group_name1,group_name2:new_group|g2,g3,g4:new2"
+  
